@@ -6,9 +6,13 @@ const app = express();
 
 app.use(bodyPaprser.json());
 
-app.use(express.static(path.join(__dirname, "client", "index.html")));
-app.get("*", function (req, res) {
+app.use(express.static(path.join(__dirname, "client")));
+
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "client", "index.html"));
+});
+app.get("/form", function (req, res) {
+  res.sendFile(path.join(__dirname, "client", "form.html"));
 });
 
 const PORT = process.env.PORT || 5000;
